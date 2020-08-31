@@ -5,8 +5,9 @@ const controlToggleBtn = document.querySelector('#control-toggle');
 const clearBtn = document.querySelector('#clear');
 
 // etching control and color variables
-const alpha = 0.1;
 let control = "mouseover";
+
+const alpha = 0.1;
 let flatColor = `rgba(0,0,0,1)`;
 let shadedColor = `rgba(0,0,0,0.5)`;
 
@@ -39,9 +40,9 @@ controlToggleBtn.addEventListener('click', () => {
 
 // reset all etched cells.
 clearBtn.addEventListener('click', () => {
-  let etchedCells = document.querySelectorAll('.etched');
-  etchedCells.forEach(item => {
-    item.classList.remove("etched");
+  let allCells = document.querySelectorAll('.grid-cells');
+  allCells.forEach(item => {
+    item.style.background = "";
   })
 })
 
@@ -72,9 +73,9 @@ let etchCell = function(e) {
   background = e.target.style.background;
   // e.target.classList.toggle("etched");
   if(background) {
-    e.target.style.background = ""
+    e.target.style.background = "";
   } else {
-    e.target.style.background = flatColor;
+    e.target.style.background = flatColor // should be a function that returns color here;
   }
 }
 
