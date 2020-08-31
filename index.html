@@ -7,6 +7,24 @@
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="style.css">
   <title>Etch-a-sketch</title>
+  <style>
+    .main-container {
+      width: 100%;
+
+      border: 5px solid red;
+      border-radius: 20px;
+    }
+
+    .drawing-grid {
+      width: 100%;
+
+      padding: 20px;
+    }
+
+    form {
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
   <div class="main-content">
@@ -15,6 +33,24 @@
     </header>
 
     <main>
+      <div>
+        <button class='button' id='reset'></button>
+        <!-- <form onsubmit="alert(grid-size);return false" class="center flex-column">
+          <div>
+            <label for="grid-size">Choose grid width and height: </label>
+            <input id="grid-size" name='grid-size' type="number" min='16'>
+          </div>
+          <button class="button" type="submit">
+            GENERATE GRID!
+          </button>
+        </form> -->
+
+      </div>
+      <div class="main-container">
+        <div class="drawing-grid">
+
+        </div>
+      </div>
 
     </main>
 
@@ -28,5 +64,6 @@
       <a href="index.html#navbar">Back to top.</a>
     </footer>
   </div> 
+  <script src='script.js'></script>
 </body>
 </html>
