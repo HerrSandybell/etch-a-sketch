@@ -8,17 +8,41 @@
   <link rel="stylesheet" href="style.css">
   <title>Etch-a-sketch</title>
   <style>
-    .main-container {
-      width: 100%;
+    :root {
+      --cellNum: 4;
+      --cellSize: 250px;
+      --cellColor: black;
+    }
 
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
       border: 5px solid red;
       border-radius: 20px;
     }
 
     .drawing-grid {
-      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(var(--cellNum), var(--cellSize));
+      grid-template-rows: repeat(var(--cellNum), var(--cellSize));
+    }
 
-      padding: 20px;
+    .grid-cells { 
+      border: 1px solid black;
+      width: 100%;
+    }
+
+    .etched {
+      background: var(--cellColor);
     }
 
     form {
@@ -34,18 +58,11 @@
 
     <main>
       <div>
-        <button class='button' id='reset'></button>
-        <!-- <form onsubmit="alert(grid-size);return false" class="center flex-column">
-          <div>
-            <label for="grid-size">Choose grid width and height: </label>
-            <input id="grid-size" name='grid-size' type="number" min='16'>
-          </div>
-          <button class="button" type="submit">
-            GENERATE GRID!
-          </button>
-        </form> -->
-
+        <button class="button" id="reset">Resize/Reset</button>
+        <button class="button" id="control-toggle">Click Etch</button>
+        <button class="button" id="clear">Clear</button>
       </div>
+
       <div class="main-container">
         <div class="drawing-grid">
 
