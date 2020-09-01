@@ -8,47 +8,15 @@
   <link rel="stylesheet" href="style.css">
   <title>Etch-a-sketch</title>
   <style>
-    :root {
-      --cellNum: 4;
-      --cellSize: 250px;
-      --cellColor: black;
-    }
 
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .main-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      border: 5px solid red;
-      border-radius: 20px;
-    }
-
-    .drawing-grid {
-      display: grid;
-      grid-template-columns: repeat(var(--cellNum), var(--cellSize));
-      grid-template-rows: repeat(var(--cellNum), var(--cellSize));
-    }
-
-    .grid-cells { 
-      border: 1px solid black;
-    }
-
-    .etched {
-      background: var(--cellColor);
-    }
   </style>
 </head>
 <body>
   <div class="main-content">
-    <header>
 
+    <header>
+      <h1>ETCH-A-SKETCH</h1>
+      <p>Sketch to your heart's content</p>
     </header>
 
     <main>
@@ -56,6 +24,11 @@
         <button class="button" id="reset">Resize/Reset (r)</button>
         <button class="button" id="control-toggle">Click Etch (e)</button>
         <button class="button" id="clear">Clear (c)</button>
+        <select name="colors" id="colors">
+          <option value="black">Black</option>
+          <option value="gradation">Graydational</option>
+          <option value="crazy">Crazy</option>
+        </select>
       </div>
 
       <div class="main-container">
@@ -75,6 +48,7 @@
       <p>&copy; Tarek Alatrach 2020</p>
       <a href="index.html#navbar">Back to top.</a>
     </footer>
+
   </div> 
   <script src='script.js'></script>
 </body>

@@ -4,12 +4,13 @@ const drawingGrid = document.querySelector('.drawing-grid');
 const resetBtn = document.querySelector('#reset');
 const controlToggleBtn = document.querySelector('#control-toggle');
 const clearBtn = document.querySelector('#clear');
+const colorSelect = document.querySelector('select');
 
 // etching control and color variables
 let control = "mouseover";
 
 const alpha = 0.1;
-let color = `rgba(0,0,0,1)`;
+let color;
 
 /**** Declare functions ****/
 
@@ -41,18 +42,62 @@ const swapControlType = function() {
 const clearGridCells = function() {
   let allCells = document.querySelectorAll('.grid-cells');
   allCells.forEach(item => {
-    item.style.background = "";
+    item.style.background = "white";
   })
 }
 
 // toggle etched stated on and off
 const etchCell = function(e) {
-  background = e.target.style.background;
-  // e.target.classList.toggle("etched");
-  if(background) {
-    e.target.style.background = "";
-  } else {
-    e.target.style.background = color // should be a function that returns color here;
+  const colorChoice = colorSelect.selectedIndex;
+  const backgroundColor = e.target.style.backgroundColor;
+
+  // this function assigns color to background from the switch statements
+  const setBackgroundColor = function(color) {
+    e.target.style.backgroundColor = color;
+  }
+
+  switch (colorChoice) {
+    // black/white
+    case 0: {    
+      if (backgroundColor !== "black") {
+        setBackgroundColor('black')
+      } else {
+        setBackgroundColor('white')
+      }
+      break;
+    }
+
+    // grayscale gradation
+    case 1: {
+
+      let alpha = 0.1;
+      currentAlpha = parseFloat(backgroundColor.slice(13, 17))
+      // if cell is greying then increase alpha by 0.1.
+      console.log(backgroundColor)
+      if (backgroundColor.includes('rgba') && currentAlpha < 1) {
+        color = `rgba(0,0,0,${0.1 + currentAlpha}`;
+        setBackgroundColor(color);
+      } else if (backgroundColor == 'rgb(0, 0, 0)') {
+        color = `rgb(0, 0, 0)`;
+        setBackgroundColor(color);
+      }
+      else {
+        color = `rgba(0,0,0,${alpha})`;
+        setBackgroundColor(color);
+      }
+      break;
+    }
+    
+    // crazy colors
+    case 2: {
+      const colorRange = ['red', 'green', 'blue'];
+      if(!colorRange.includes(backgroundColor)) {
+        setBackgroundColor(colorRange[Math.floor(Math.random() * 3)])
+      } else {
+        setBackgroundColor("white");
+      }
+      break;
+    }
   }
 }
 
@@ -64,6 +109,7 @@ function createCells(cellCount) {
     let gridCell = document.createElement("div");
     gridCell.classList.add("grid-cells");
     gridCell.id = `grid-cell-${i}`;
+    gridCell.style.backgroundColor = "white"
     drawingGrid.appendChild(gridCell);
   }
 
@@ -74,7 +120,7 @@ function createCells(cellCount) {
 // set css variables. cellNum sets the column and row numbers. cellSize sets width and height.
 function setCellDimensions(cellCount){
   documentRoot.style.setProperty("--cellNum", cellCount);
-  documentRoot.style.setProperty("--cellSize", (1000/cellCount)+"px");
+  documentRoot.style.setProperty("--cellSize", (750/cellCount)+"px");
 }
 
 // Generate a number of child divs equal to the square of the input.

@@ -27,9 +27,73 @@ main {
   min-width: 1080px;
 }
 
+
+/****** HEADER ******/
+
+h1 {
+  font-size: 4rem;
+  text-decoration: underline;
+  text-align: center;
+}
+
+p {
+  font-size: 2rem;
+  text-align: center;
+}
+
 /****** ETCH A SKETCH ******/
 
+:root {
+  --cellNum: 4;
+  --cellSize: 250px;
+}
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.1rem;
+}
+
+.button,
+select {
+  padding: 0.5em 1em;
+  margin: 10px;
+
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(#00a895 10%, #81ddd2 90%);
+  border: 2px outset rgba(11, 128, 0, 0.589);
+  border-radius: 10px;
+}
+
+.button:hover,
+select:hover {
+  background: linear-gradient(#81ddd2, #00a895);
+  box-shadow: 0 0 10px darkgray;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: rgb(245, 245, 245);
+  border: 8px outset #00a895;
+  border-radius: 20px;
+}
+
+.drawing-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cellNum), var(--cellSize));
+  grid-template-rows: repeat(var(--cellNum), var(--cellSize));
+}
+
+.grid-cells { 
+  border: 1px solid black;
+}
 
 /****** FOOTER *******/
 
