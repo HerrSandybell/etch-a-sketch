@@ -12,7 +12,10 @@ let control = "mouseover";
 const alpha = 0.1;
 let color;
 
+
+/***************************/
 /**** Declare functions ****/
+/***************************/
 
 // When reset button is clicked, prompt user for new grid size.
 // If grid size is forced to be empty, set it to 4.
@@ -101,7 +104,10 @@ const etchCell = function(e) {
   }
 }
 
+
+/***********************/
 /**** GRID CREATION ****/
+/***********************/
 
 // Create a number of div grid cells equal to cell count.
 function createCells(cellCount) {
@@ -129,7 +135,10 @@ function generateGrid(size) {
   setCellDimensions(size);
 }
 
+
+/*************************/
 /**** EVENT LISTENERS ****/
+/*************************/
 
 // attach click listeners to buttons
 resetBtn.addEventListener('click', resetGrid);
